@@ -29,10 +29,12 @@
 %-------------------------------------
 \section{Introdução}
 
-\subsection{Motivação}
+
 \frame{\begin{center}
         \Huge Introdução
 \end{center}}
+
+\subsection{Motivação}
 
 \begin{frame}[fragile]
     \frametitle{Motivação}
@@ -45,23 +47,91 @@
 \begin{frame}[fragile]
     De acordo com a operadora, posso navegar até 300MB no mês usando até 1Mbps, após isso, a velocidade cai
     para 50 kbps.
-    \pause
 
+    \pause
+    \vspace{0.4cm}
     Mas eu já experimentei essa diminuição de velocidade mesmo não tendo atingido o limite.
 \end{frame}
 
+\subsection{O paper}
 \begin{frame}[fragile]
     \frametitle{O paper}
     \begin{center}
-        Chunyi Peng, Guan-Hua Tu, Chi-Yu Li Songwu Lu
+        Chunyi Peng, Guan-Hua Tu, Chi-Yu Li, Songwu Lu
     \end{center}
-    \vspace{1cm}
+    \vspace{0.4cm}
     \begin{itemize}
         \item Estudo em casos normais e extremos.
         \item UDP e TCP.
         \item Navegar sem serem cobrados.
 
     \end{itemize}
+\end{frame}
+
+\subsection{Os testes}
+\begin{frame}[fragile]
+    Os testes foram feitos usando duas grandes operadoras dos EUA. \\
+    Com algumas comparações (em certos casos) com uma terceira operadora e com operadoras chinesas.
+\end{frame}
+
+\section{Casos Extremos}
+\frame{\begin{center}
+        \Huge Casos Extremos
+\end{center}}
+
+\subsection{UDP sem controle}
+
+\begin{frame}[fragile]
+    UDP não tem verificação de recebimento de pacote. \\
+    A operadora recebe os pacotes do servidor, mas não consegue mandar para o dispositivo móvel. Mas ainda assim, são cobrados.
+\end{frame}
+
+\begin{frame}[fragile]
+    O que importa é a quantidade de pacotes que chega na operadora, e não quantos pacotes chegam na Unidade Móvel.
+\end{frame}
+
+\subsection{Velocidade maior do que a compatível}
+
+\begin{frame}[fragile]
+    TCP tem controle de fluxo, portanto, pacotes não recebidos não devolvem ACK. Assim, não são tantos pacotes perdidos e a diferença não é tão grande.
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    UDP não tem. Portanto os pacotes entram na operadora com a velocidade enviada pelo servidor e são armazenadas em um buffer para serem enviadas conforme for possível. 
+
+    \vspace{0.3cm}
+    Mas esse buffer tem tamanho limitado $\rightarrow$ perda de pacotes.
+\end{frame}
+
+\section{Casos Normais}
+
+\frame{\begin{center}
+        \Huge Casos Normais
+\end{center}}
+
+\subsection{Envio de dados para IP errado}
+
+\begin{frame}[fragile]
+    Enviar dados via UDP para um IP inválido gera cobrança.
+\end{frame}
+
+\subsection{Links quebrados}
+
+\begin{frame}[fragile]
+    \frametitle{Página não encontrada}
+    Página não encontrada
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Página com 50 links de imagens inexistentes}
+    Teste
+\end{frame}
+
+\begin{frame}[fragile]
+\end{frame}
+
+\begin{frame}[fragile]
 \end{frame}
 
 
