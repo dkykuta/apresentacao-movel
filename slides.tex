@@ -53,6 +53,13 @@
     Mas eu já experimentei essa diminuição de velocidade mesmo não tendo atingido o limite.
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{Cenário}
+    Um exemplo: Alice só se lembra de ter baixado um aplicativo de 2MB da App Store.
+
+    <<IMAGEM DA CONTA>>
+\end{frame}
+
 \subsection{O paper}
 \begin{frame}[fragile]
     \frametitle{O paper}
@@ -110,28 +117,76 @@
         \Huge Casos Normais
 \end{center}}
 
+% Páginas 7 e 8
+
+\begin{frame}[fragile]
+% Aqui eu preciso da imagem do começo
+        \frametitle{Quick Fix}
+        \begin{itemize}
+            \item Feedback do RNC sobre pacotes não enviaddos para a U.M.
+            \item Timer para interromper a tentativa de enviar dados quando não tem sinal
+            \item Big Data $\rightarrow$ a rede deve verificar a situação do dispositivo
+        \end{itemize}
+\end{frame}
+
+\section{Gray Areas}
+\frame{\begin{center}
+        \Huge Gray Areas
+\end{center}}
+
 \subsection{Envio de dados para IP errado}
 
 \begin{frame}[fragile]
     Enviar dados via UDP para um IP inválido gera cobrança.
-\end{frame}
 
-\subsection{Links quebrados}
-
-\begin{frame}[fragile]
-    \frametitle{Página não encontrada}
-    Página não encontrada
+    \vspace{0.4cm}
+    Por TCP, em pouco tempo o envio é interrompido, pela ausência de ACKs.
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Página com 50 links de imagens inexistentes}
-    Teste
+    \frametitle{Middleboxes}
+    Proxy servers, CDN servers, NAT boxes, firewalls
+
+    \vspace{0.4cm}
+    \pause
+    Em uma das operadoras testadas, existia alguma middlebox, fazendo com que a unidade móvel recebesse os ACKs, portanto a conexão não era interrompida como deveria.
+\end{frame}
+
+\subsection{Outras aplicações}
+
+\begin{frame}[fragile]
+    \frametitle{FTP}
+    FTP usa duas sessões TCP: uma na porta 21 (comandos) e uma na porta 20 (tranferência de dados).
+
+    \vspace{0.5cm}
+    Ambas são cobradas.
 \end{frame}
 
 \begin{frame}[fragile]
+    \frametitle{Links quebrados}
+    O resultado final é o aviso do erro, mas ainda assim a transmissão desses dados é cobrada.
+
+    E em quantidade diferente.
+
+    <<IMAGEM PAGINA 11>>
 \end{frame}
 
 \begin{frame}[fragile]
+    \frametitle{Redirecionamentos}
+    O usuário mal percebe o que acontece, mas acaba sendo cobrado pelos redirecionamentos. Até mesmo no caso de 15 redirecionamentos.
+\end{frame}
+
+\section{Driblando a cobrança}
+\frame{\begin{center}
+        \Huge Driblando a cobrança
+\end{center}}
+
+\subsection{DNS não cobrado}
+\begin{frame}[fragile]
+    Serviço de DNS: porta 53.
+
+    \vspace
+    \Big{Não é cobrado}
 \end{frame}
 
 
