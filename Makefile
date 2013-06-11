@@ -5,9 +5,17 @@
 #
 
 BASE_NAME = slides
+FINAL_NAME=apresentacao.pdf
 
 LATEX     = latex
 PDFLATEX  = pdflatex
+
+all: pdf rename clean
+	
+
+
+rename: pdf
+	cp $(BASE_NAME).pdf $(FINAL_NAME)
 
 pdf: ${BASE_NAME}.pdf
 
