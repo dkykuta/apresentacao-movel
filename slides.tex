@@ -17,7 +17,7 @@
 % lembrete: \vspace{0.4cm}
 
 \title{Can We Pay For What We Get In 3G Data Access?}
-\author{Diogo Haruki Kykuta}
+\author{MAC0463/5743 - Computação Móvel}
 \date{}
 
 \begin{document}
@@ -90,9 +90,11 @@
     \begin{center}
         \includegraphics[scale=0.3]{images/sala.jpg}
     \end{center}
+    P1 e P2: sem sinal
+
+    P9: sinal forte
     \end{figure}
 \end{frame}
-
 
 \section{Casos Extremos}
 \frame{\begin{center}
@@ -102,19 +104,56 @@
 \subsection{UDP sem controle}
 
 \begin{frame}[fragile]
-    UDP não tem verificação de recebimento de pacote. \\
+    UDP não tem controle de conexão. \\
     A operadora recebe os pacotes do servidor, mas não consegue mandar para o dispositivo móvel. Mas ainda assim, são cobrados.
 \end{frame}
 
 \begin{frame}[fragile]
     O que importa é a quantidade de pacotes que chega na operadora, e não quantos pacotes chegam na Unidade Móvel.
+    \begin{figure}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/arquitetura3G.jpg}
+    \end{center}
+    \end{figure}
+    GGSN: Gateway GPRS Support Node
+    
+    SGSN: Serving GPRS Support Node
 \end{frame}
+
+\begin{frame}[fragile]
+    Servidor: 8Mbps
+
+    UM: sem sinal
+    
+    \vspace{0.4cm}
+
+    Em um minuto, a UM recebeu poucos bytes,
+
+    O servidor enviou aproximadamente 60MB
+  
+    Foi cobrado 58.7 MB
+\end{frame}
+
+\begin{frame}[fragile]
+    Com uma velocidade de 50kbps, o servidor ficou enviando dados durante 3 horas mesmo com o celular sem sinal.
+\end{frame}
+
+\section{Casos Normais}
+
+\frame{\begin{center}
+        \Huge Casos Normais
+\end{center}}
 
 \subsection{Velocidade maior do que a compatível}
 
 \begin{frame}[fragile]
-    TCP tem controle de fluxo, portanto, pacotes não recebidos não devolvem ACK. Assim, não são tantos pacotes perdidos e a diferença não é tão grande.
+    TCP tem controle de fluxo, portanto, se a velocidade não é compatível, pacotes serão perdidos, fazendo com que faltem alguns ACKs $\rightarrow$ adaptação da velocidade.
     
+    \begin{figure}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/packetLoss.jpg}
+    \end{center}
+    \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -124,19 +163,21 @@
     Mas esse buffer tem tamanho limitado $\rightarrow$ perda de pacotes.
 \end{frame}
 
-\section{Casos Normais}
-
-\frame{\begin{center}
-        \Huge Casos Normais
-\end{center}}
-
+\begin{frame}[fragile]
+    \frametitle{Teste com Estudantes}
+    \begin{figure}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/seteEstudantes.jpg}
+    \end{center}
+    \end{figure}
+\end{frame}
 % Páginas 7 e 8
 
 \begin{frame}[fragile]
 % Aqui eu preciso da imagem do começo
         \frametitle{Quick Fix}
         \begin{itemize}
-            \item Feedback do RNC sobre pacotes não enviaddos para a U.M.
+            \item Feedback do RNC sobre pacotes não enviados para a U.M.
             \item Timer para interromper a tentativa de enviar dados quando não tem sinal
             \item Big Data $\rightarrow$ a rede deve verificar a situação do dispositivo
         \end{itemize}
@@ -176,20 +217,23 @@
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Links quebrados}
-    O resultado final é o aviso do erro, mas ainda assim a transmissão desses dados é cobrada.
-
-    E em quantidade diferente.
-
+    \frametitle{Links Quebrados}
     \begin{figure}
     \begin{center}
         \includegraphics[scale=0.3]{images/applications.jpg}
     \end{center}
     \end{figure}
+    O resultado final é o aviso do erro, mas ainda assim a transmissão desses dados é cobrada.
+
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Redirecionamentos}
+    \begin{figure}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/applications.jpg}
+    \end{center}
+    \end{figure}
     O usuário mal percebe o que acontece, mas acaba sendo cobrado pelos redirecionamentos. Até mesmo no caso de 15 redirecionamentos.
 \end{frame}
 
