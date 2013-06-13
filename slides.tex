@@ -17,7 +17,7 @@
 % lembrete: \vspace{0.4cm}
 
 \title{Can We Pay For What We Get In 3G Data Access?}
-\author{MAC0463/5743 - Computação Móvel}
+\author{Diogo Haruki Kykuta \\ MAC0463/5743 - Computação Móvel}
 \date{}
 
 \begin{document}
@@ -35,24 +35,6 @@
 \end{center}}
 
 \subsection{Motivação}
-
-\begin{frame}[fragile]
-    \frametitle{Motivação}
-    \begin{itemize}
-        \item Experiências ruins com 3G
-        \item Queda de velocidade no final do mês, mesmo eu achando que estava abaixo do "limite"
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-    De acordo com a operadora, posso navegar até 300MB no mês usando até 1Mbps, após isso, a velocidade cai
-    para 50 kbps.
-
-    \pause
-    \vspace{0.4cm}
-    Mas eu já experimentei essa diminuição de velocidade mesmo não tendo atingido o limite.
-\end{frame}
-
 \begin{frame}[fragile]
     \frametitle{Cenário}
     Um exemplo: Alice só se lembra de ter baixado um aplicativo de 2MB da App Store.
@@ -62,6 +44,14 @@
         \includegraphics[scale=0.5]{images/contaAlice.jpg}
     \end{center}
     \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Motivação Pessoal}
+    \begin{itemize}
+        \item Experiências ruins com 3G
+        \item Queda de velocidade no final do mês, mesmo eu achando que estava abaixo do "limite"
+    \end{itemize}
 \end{frame}
 
 \subsection{O paper}
@@ -77,11 +67,15 @@
         \item Navegar sem serem cobrados.
 
     \end{itemize}
+
+    \tiny{C. Peng, G. Tu, C. Li, and S. Lu. Can We Pay for What We Get in 3G
+        Data Access? In \textit{Proceedings of Annual International Conference on Mobile Computing and Networking, 2012}}
 \end{frame}
 
 \subsection{Os testes}
 \begin{frame}[fragile]
     Os testes foram feitos usando duas grandes operadoras dos EUA. \\
+    \vspace{0.4cm}
     Com algumas comparações (em certos casos) com uma terceira operadora e com operadoras chinesas.
 \end{frame}
 
@@ -157,7 +151,8 @@
 \end{frame}
 
 \begin{frame}[fragile]
-    UDP não tem. Portanto os pacotes entram na operadora com a velocidade enviada pelo servidor e são armazenadas em um buffer para serem enviadas conforme for possível. 
+    UDP não tem. Portanto os pacotes entram na operadora com a velocidade enviada pelo servidor e são armazenados em um buffer para serem enviadas conforme for possível. 
+
 
     \vspace{0.3cm}
     Mas esse buffer tem tamanho limitado $\rightarrow$ perda de pacotes.
@@ -167,7 +162,7 @@
     \frametitle{Teste com Estudantes}
     \begin{figure}
     \begin{center}
-        \includegraphics[scale=0.3]{images/seteEstudantes.jpg}
+        \includegraphics[scale=0.4]{images/seteEstudantes.jpg}
     \end{center}
     \end{figure}
 \end{frame}
@@ -177,7 +172,7 @@
 % Aqui eu preciso da imagem do começo
         \frametitle{Quick Fix}
         \begin{itemize}
-            \item Feedback do RNC sobre pacotes não enviados para a U.M.
+            \item Feedback do RNC sobre pacotes não enviados para a UM
             \item Timer para interromper a tentativa de enviar dados quando não tem sinal
             \item Big Data $\rightarrow$ a rede deve verificar a situação do dispositivo
         \end{itemize}
@@ -247,9 +242,25 @@
     Serviço de DNS: porta 53.
 
     \vspace{0.4cm}
-    \Huge{Não é cobrado}
+    Não é cobrado
+
+    \vspace{0.4cm}
+    Fizeram um protótipo para navegação por essa porta.
+
+    Conseguiram transferir aproximadamente 200 MB sem serem
+    cobrados.
+
 \end{frame}
 
+\section{Conclusões}
+\begin{frame}[fragile]
+    \begin{itemize}
+        \item A perda de pacotes por falta de sinal do celular pode ser detectada pela operadora. Cobrá-los pode ser considerado uma omissão.
+        \item Se pacotes não enviados da antena para o celular não fossem cobrados, não existiria problema com um servidor UDP continuar mandando dados ininterruptamente.
+        \item Para saber se no Brasil é a mesma coisa precisaria fazer experimentos, uma vez que o modo como é feita a cobrança não é documentada (ou pelo menos não é fácil de se encontrar).
+        \item Como a maior parte dos serviços são feitos usando TCP, a diferença ainda fica numa margem aceitável.
+    \end{itemize}
+\end{frame}
 
 
 \end{document}
